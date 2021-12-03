@@ -33,6 +33,11 @@ typedef struct Global_ {
     char *value;
 } Global;
 
+#if !defined(MARIADB_BASE_VERSION) && !defined(MARIADB_VERSION_ID) && \
+  MYSQL_VERSION_ID >= 80001 && MYSQL_VERSION_ID != 80002
+typedef bool my_bool;
+#endif
+
 static pthread_mutex_t bglmtx = PTHREAD_MUTEX_INITIALIZER;
 static Global *globals_list_first;
 
