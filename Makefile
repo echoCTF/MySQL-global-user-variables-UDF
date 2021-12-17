@@ -7,7 +7,7 @@ DESTDIR=/usr/local/lib
 all: $(TARGET)
 
 $(TARGET): $(SOURCES)
-	$(CC) `mysql_config --cflags` \
+	$(CC) `mariadb_config --cflags` \
 		-Wall -W -pthread -shared -fPIC -D_GNU_SOURCE=1 \
 		$(SOURCES) -o $(TARGET)
 
